@@ -33,4 +33,4 @@ RUN pip3.5 install falcon
 VOLUME /app
 EXPOSE 8000
 
-CMD ["/app/start.sh"]
+CMD ["sh", "/app/start.sh"]
