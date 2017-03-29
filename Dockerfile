@@ -2,8 +2,8 @@ FROM centos:latest
 MAINTAINER tomita
 RUN yum install -y https://centos7.iuscommunity.org/ius-release.rpm
 RUN yum install -y wget gcc-c++ make git python35u python35u-libs python35u-devel python35u-pip
-
 RUN mkdir ~/libsrc
+
 RUN cd ~/libsrc && \
     wget -q "https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7cENtOXlicTFaRUE" -O mecab.tar.gz && \
     tar xzf mecab.tar.gz && \
@@ -11,6 +11,7 @@ RUN cd ~/libsrc && \
     ./configure --enable-utf8-only && \
     make && \
     make install
+
 RUN cd ~/libsrc && \
     wget -q "https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7MWVlSDBCSXZMTXM" -O mecab-ipadic.tar.gz && \
     tar xvzf mecab-ipadic.tar.gz && \
@@ -30,4 +31,4 @@ RUN mkdir ~/webmecab && \
 
 EXPOSE 8000
 
-CMD ["python3.5", "/webmecab/webmecabapp/webmecab.py"]
+CMD ["python3.5", "~/webmecab/webmecabapp/webmecab.py"]
