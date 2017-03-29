@@ -25,10 +25,10 @@ RUN pip3.5 install falcon mecab-python3
 RUN echo '/usr/local/lib' >> /etc/ld.so.conf.d/local.conf && \
     ldconfig
 
-RUN mkdir ~/webmecab && \
-    cd ~/webmecab && \
+RUN mkdir /app && \
+    cd /app && \
     git clone https://github.com/tommy810/webmecabapp.git
 
 EXPOSE 8000
 
-CMD ["python3.5", "~/webmecab/webmecabapp/webmecab.py"]
+CMD ["python3.5", "/app/webmecabapp/webmecab.py"]
